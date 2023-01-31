@@ -17,3 +17,7 @@
 .li-item-class:first-child {
   color: fuchsia;
 }
+
+.li-item-class:last-child {
+  color: red;
+}

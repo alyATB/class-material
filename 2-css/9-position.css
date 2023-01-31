@@ -13,8 +13,11 @@
   background-color: rgb(71, 117, 37);
   border: 1px solid #1f618d;
 
-  /* position: static; */
+  /* top: 40px; */
+  /* left: 40px;  */
+  
   /* position: relative; */
+  /* position: static; */
   /* position: absolute; */
   /* position: fixed; */
   /* position: sticky; */

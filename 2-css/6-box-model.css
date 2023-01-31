@@ -1,16 +1,12 @@
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
 .box-model-class {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   border: 3px solid red;
   padding: 25px;
   margin: 25px;
   background-color: #2e86c1;
-
-
-  
-  /* box-sizing: border-box; */
 }
