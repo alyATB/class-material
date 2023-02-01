@@ -25,7 +25,7 @@ const sayHey = createGreeting("hey");
 console.log(sayHello("Cris"));
 console.log(sayHello("Mirian"));
 console.log(sayHey("Clara"));
-console.log(sayHello("Mirian"));
+console.log(sayHey("Mirian"));
 
 
 function createGame(gameName) {
@@ -46,6 +46,6 @@ console.log(soccerGame());
 console.log(basketballGame());
 console.log(soccerGame());
 
-// // More info on this
-// // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
-// // demo inspired https://github.com/wesbos/beginner-javascript
+// // // More info on this
+// // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+// // // demo inspired https://github.com/wesbos/beginner-javascript

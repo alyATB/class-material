@@ -1,14 +1,15 @@
 // creates an array
 const faces = ["😃", "😗", "🤡", "🤑", "😵", "🤤", "🙃", "🥳"];
 // 0     1     2    3    4     5     6    7
+
 // array length
 console.log("1 ========== ========== =========");
 console.log(faces.length);
 
 // // Access an Array item using the index position
 console.log("2 ========== ========== =========");
-console.log(faces[0]);
-console.log(faces[1]);
+console.log(faces[0]); // first item in the array
+console.log(faces[1]); // second item in the array
 console.log(faces[faces.length - 1]); // last element
 
 // // Loop over an Array
@@ -40,7 +41,8 @@ console.log(faces);
 // //Find the index of an item in the Array
 console.log("8 ========== ========== =========");
 console.log(faces.includes("🤡")); // includes is a method to check if an element exist or not
-const index = faces.indexOf("🤡");
+const index = faces.indexOf("🤡"); // returns the index, if not found it will return -1
+console.log(faces.indexOf("adfhdfjhdsgf"))
 console.log(index);
 
 // //Remove an item by index position
@@ -56,18 +58,19 @@ console.log(copyFaces);
 // // MAP
 console.log("11 ========== ========== =========");
 const facesWithHand = faces.map((f) => {
-  // return f + "-👋";
   return `${f}-👋`;
 });
 console.log(facesWithHand);
 
 const numbers = [1, 2, 3, 4, 5, 6];
 const doubled = numbers.map((n) => n * 2);
+console.log(doubled);
+
+
 // const doubled = numbers.map((n) => {
 //   return n * 2;
 // });
 
-console.log(doubled);
 
 // // // JOIN
 console.log("12 ========== ========== =========");
@@ -132,5 +135,5 @@ const studentsFromVancouverAnd30PlusOnlyName = students
   });
 console.log(studentsFromVancouverAnd30PlusOnlyName);
 
-// // // More info on this
-// // // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+// More info on this
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array

@@ -34,7 +34,7 @@ class Pizza {
   #bankBalance = 10000;
 }
 
-const myPizza = new Pizza(["pinaple"], "Cris");
+const myPizza = new Pizza(["pinaple", "peperoni"], "Cris");
 
 console.log(myPizza);
 

@@ -14,24 +14,30 @@ const person = {
     },
     {
       name: "Francisco",
-      age: 1,
+      age: 2,
+    },
+    {
+      name: "Felipe",
+      age: 0,
     },
   ],
   getFullName: function () {
+    // return this.firstName + " " + this.lastName
     return `${this.firstName} ${this.lastName}`;
   },
 };
 
 // accessing object values
 console.log("1 ========== ========== =========");
-console.log(person.firstName);
+console.log(person.firstName); //cristian
+console.log(person["firstName"])
 console.log(person["weird-key+"]);
-console.log(person.kids);
-console.log(person.kids[0].name);
-console.log(person.kids[1].name);
+console.log(person.kids); // returns the kids array
+console.log(person.kids[0].name); // clara
+console.log(person.kids[1].name); // francisco
 console.log(person.getFullName());
 
-// // updating values
+// updating values
 console.log("2 ========== ========== =========");
 person.age = 40;
 person.address = 'my home address ......';
@@ -49,7 +55,8 @@ const person2 = { ...person, firstName: "Rui", lastName: "Wang" };
 console.log(person2.firstName);
 console.log(person2.kids);
 console.log(person2.email);
+console.log(person2)
 
 
-// // // More info on this
-// // // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
+// More info on this
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
