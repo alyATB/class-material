@@ -1,28 +1,53 @@
 const todoForm = document.querySelector(".todo-form");
 const list = document.querySelector(".list");
+
+// We need an array to hold our state
 let items = [];
 
 function updateItems() {
-  // list.innerHTML = "<li>anything</li> <li>anything 2</li> <li>anything 3</li>"
-
   const html = items
     .map(
       (item) =>
         `<li class="todo-item">
-            <input value="${item.id}" type="checkbox" 
-              ${item.completed ? "checked" : ""}  
-            />
-            <span class="itemName">${item.name}</span>
-            <button class="remove-item" value="${item.id}"> X </button>
-         </li>`
+          <input value="${item.id}" type="checkbox" 
+            ${item.completed ? "checked" : ""}  
+          />
+          <span class="itemName">${item.name}</span>
+          <button class="remove-item" value="${item.id}"> X </button>
+      </li>`
     )
     .join("");
-
-  // console.log(html);
 
   list.innerHTML = html;
 
   saveToLocalStorage();
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const name = e.currentTarget.item.value;
+
+  if (!name) return;
+
+  const item = {
+    id: Date.now(), // one quick way to generate a random unique id
+    name: name,
+    completed: false,
+  };
+
+  items.push(item);
+
+  console.log(`There are now ${items.length} in your state`);
+
+  e.target.reset();
+
+  updateItems();
+}
+
+function saveToLocalStorage() {
+  console.info("Saving items to localstorage");
+  localStorage.setItem("items", JSON.stringify(items));
 }
 
 function deleteItem(id) {
@@ -36,10 +61,10 @@ function toogleItem(id) {
   updateItems();
 }
 
-list.addEventListener("click", function (e) {
-  console.log(e.target)
-  const id = parseInt(e.target.value);
+todoForm.addEventListener("submit", handleSubmit);
 
+list.addEventListener("click", function (e) {
+  const id = parseInt(e.target.value);
   if (e.target.matches("button")) {
     deleteItem(id);
   } else if (e.target.matches('input[type="checkbox"]')) {
@@ -47,45 +72,14 @@ list.addEventListener("click", function (e) {
   }
 });
 
-function saveToLocalStorage() {
-  console.info("Saving items to localstorage");
-  localStorage.setItem("items", JSON.stringify(items));
-}
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-  console.log("submit");
-
-  const name = e.currentTarget.item.value;
-
-  if (!name) return;
-
-  const item = {
-    id: Date.now(),
-    name: name,
-    completed: false,
-  };
-
-  items.push(item);
-
-  e.currentTarget.reset();
-
-  console.log(items);
-
-  updateItems();
-};
-
 function restoreFromLocalStorage() {
   console.info("Restoring from LS");
   // pull the items from LS
   const lsItems = JSON.parse(localStorage.getItem("items"));
-  if (lsItems && lsItems.length) {
+  if (lsItems.length) {
     items = lsItems;
     updateItems();
   }
 }
 
-restoreFromLocalStorage()
-
-todoForm.addEventListener("submit", handleSubmit);
+restoreFromLocalStorage();
