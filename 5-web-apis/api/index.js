@@ -44,6 +44,11 @@ app.get("/tweets/:id", (req, res) => {
 
 // PUT: updates Tweet text with :id
 app.put("/tweets/:id", (req, res) => {
+
+  if (!req.body.text || !req.params.id) {
+    res.status(401).send('incorrect input values')
+  }
+
   const updateResult = updateTweet(req.params.id, req.body.text);
 
   if (updateResult) {
