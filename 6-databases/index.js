@@ -12,11 +12,12 @@ app.use(morgan("dev"));
 
 const prisma = new PrismaClient();
 
-app.get("/todos", async (req, res) => {
+app.get("/todos/:email", async (req, res) => {
+  const email = req.params.email
   const posts = await prisma.todoItem.findMany({
     where: {
       author: {
-        email: "cristian.penarrieta@gmail.com",
+        email: email
       },
     },
   });
