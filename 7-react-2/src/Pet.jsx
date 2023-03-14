@@ -8,6 +8,7 @@ export default function Pet({
   image,
   selected,
   adoptPet,
+  setPets,
 }) {
   return (
     <div className={`pet ${selected ? "pet-selected" : ""}`}>
@@ -18,6 +19,7 @@ export default function Pet({
         <img src={image} alt="pet"></img>
       </div>
       <button onClick={() => adoptPet(id)}> Adopt Me 🐶</button>
+      <button onClick={() => setPets([])}>Delete All</button>
     </div>
   );
 }

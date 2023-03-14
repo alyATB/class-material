@@ -45,7 +45,6 @@ function App() {
     const clonedPets = [...pets];
     const selectedPet = clonedPets.find((p) => p.id === id);
     selectedPet.selected = !selectedPet.selected;
-
     setPets(clonedPets);
   }
 
@@ -63,6 +62,7 @@ function App() {
             image={pet.image}
             selected={pet.selected}
             adoptPet={adoptPet}
+            setPets={setPets}
           />
         ))}
       </div>

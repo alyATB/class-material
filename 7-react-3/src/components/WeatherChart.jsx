@@ -64,9 +64,16 @@ const apiUrl =
 
 export default function WeatherChart({latLng}) {
   const [datasets, setDatasets] = useState([]);
+  
+  // DONT FETCH HERE
+  // ONLY FETCH within:
+  // 1: callbacks
+  // 2: useEffects
+  // fetch(`${apiUrl}&lat=${latLng.lat}....`)
 
   // useEffect(() => {
-  //   // this will only run on the first render
+  //  this will only run on the first render
+  //   fetch(`${apiUrl}&lat=${latLng.lat}....`)
   // }, [])
 
   function formatWeatherData(data) {
@@ -91,7 +98,7 @@ export default function WeatherChart({latLng}) {
     async function getWeatherData() {
       const res = await fetch(`${apiUrl}&lat=${latLng.lat}&lon=${latLng.lng}`);
       const data = await res.json();
-      
+
       const formattedData = formatWeatherData(data);
       setDatasets(formattedData);
     }
