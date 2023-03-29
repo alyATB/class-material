@@ -35,13 +35,13 @@ app.get("/todos", requireAuth, async (req, res) => {
     },
   });
 
-  const posts = await prisma.todoItem.findMany({
+  const todos = await prisma.todoItem.findMany({
     where: {
       authorId: user.id,
     },
   });
 
-  res.json(posts);
+  res.json(todos);
 });
 
 // creates a todo item

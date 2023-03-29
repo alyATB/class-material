@@ -1,17 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const requestedScopes = [
-  "read:todoitem",
-  "read:user",
-  "edit:todoitem",
-  "edit:user",
-  "delete:todoitem",
-  "delete:user",
-  "write:user",
-  "write:todoitem",
-];
-
 const AuthTokenContext = React.createContext();
 
 function AuthTokenProvider({ children }) {
@@ -24,7 +13,7 @@ function AuthTokenProvider({ children }) {
         const token = await getAccessTokenSilently({
           authorizationParams: {
             audience: process.env.REACT_APP_AUTH0_AUDIENCE,
-            scope: requestedScopes.join(" "),
+            scope: '',
           },
         });
         setAccessToken(token);
