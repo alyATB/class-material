@@ -17,6 +17,8 @@ import "./style/index.css";
 const container = document.getElementById("root");
 
 const requestedScopes = [
+  "profile",
+  "email",
   "read:todoitem",
   "read:user",
   "edit:todoitem",
@@ -46,9 +48,9 @@ root.render(
       clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       authorizationParams={{
         redirect_uri: `${window.location.origin}/verify-user`,
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+        scope: requestedScopes.join(" "),
       }}
-      audience={process.env.REACT_APP_AUTH0_AUDIENCE}
-      scope={requestedScopes.join(" ")}
     >
       <AuthTokenProvider>
         <BrowserRouter>

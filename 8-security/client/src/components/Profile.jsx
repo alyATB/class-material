@@ -18,7 +18,7 @@ export default function Profile() {
         <p>🔑 Auth0Id: {user.sub}</p>
       </div>
       <div>
-        <p>✅ Email verified: {user.email_verified.toString()}</p>
+        <p>✅ Email verified: {user.email_verified?.toString()}</p>
       </div>
     </div>
   );

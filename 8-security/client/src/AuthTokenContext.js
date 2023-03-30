@@ -3,6 +3,19 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const AuthTokenContext = React.createContext();
 
+const requestedScopes = [
+  "profile",
+  "email",
+  "read:todoitem",
+  "read:user",
+  "edit:todoitem",
+  "edit:user",
+  "delete:todoitem",
+  "delete:user",
+  "write:user",
+  "write:todoitem",
+];
+
 function AuthTokenProvider({ children }) {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
   const [accessToken, setAccessToken] = useState();
@@ -13,7 +26,7 @@ function AuthTokenProvider({ children }) {
         const token = await getAccessTokenSilently({
           authorizationParams: {
             audience: process.env.REACT_APP_AUTH0_AUDIENCE,
-            scope: '',
+            scope: requestedScopes.join(' ')
           },
         });
         setAccessToken(token);
